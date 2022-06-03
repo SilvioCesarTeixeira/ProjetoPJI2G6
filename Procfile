@@ -1,0 +1,1 @@
+web: gunicorn PJI2.wsgi

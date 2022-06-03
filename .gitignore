@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+!/pji2app/templates/nform.html
+!/pji2app/templates/oform.html
+!/lib/
+!/bin/
+!/.env

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastramento</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="col-8 m-auto pt-3 pb-3 text-center">
+        <h1>CADASTRO DE ESTABELECIMENTO</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-3 text-center">
+        <a href="/" class="btn btn-info">VOLTAR</a>
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-3 text-center">
+        <!-- {{form.as_p}} linha para testar a exibição do formulario-->
+        <div id="result"></div>
+        <form class="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+            {% csrf_token %} <!-- comando do Django para garantir proteção ao formulário-->
+            <div class="form-group mt-4">Razão Social: {{form.inputEmpresa}}</div>
+            <div class="form-group mt-4">Email: {{form.inputEmail}}</div>
+            <div class="form-group mt-4">CNPJ: {{form.inputCNPJ}}</div>
+            <div class="form-group mt-4">Telefone: {{form.inputTel}}</div>
+            <div class="form-group mt-4">Celular: {{form.inputCel}}</div>
+            <div class="form-group mt-4">Endereço: {{form.inputAddress}}</div>
+            <div class="form-group mt-4">Número: {{form.inputNumber}}</div>
+            <div class="form-group mt-4" >Complemento: {{form.inputAddress2}}</div>
+            <div class="form-group mt-4">CEP: {{form.inputCEP}}</div>
+            <div class="form-group mt-4">Cidade: {{form.inputCity}}</div>
+            <div class="form-group mt-4">Estado: {{form.inputEstado}}</div>
+
+            <input type="submit" class="btn btn-success" , value="SALVAR">
+        </form>
+    </div>
+
+    {% load static %}
+    {% block scripts %}
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'javascript.js' %}"></script>
+    <script src="{% static 'jquery.mask.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function(){
+        $("#id_inputCEP").mask('00000-000');
+        $("#id_inputTel").mask('(00)0000-0000');
+        $("#id_inputCel").mask('(00)00000-0000');
+        $('#id_inputCNPJ').mask('00.000.000/0000-00', {reverse: true});
+        })
+    </script>
+
+    {% endblock %}
+
+</body>
+</html>
