@@ -8,7 +8,10 @@ def home(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Cadastro.objects.filter(inputCity__icontains=search)
+        if tipo == "None":
+            data['db'] = Cadastro.objects.filter(inputCity__icontains=search)
+        else:
+            data['db'] = Cadastro.objects.filter(inputCity__icontains=search, inputTipo=tipo)
     else:
         qry_data = Cadastro.objects.get_queryset().order_by(
             'id')  # Garante que o DB fornece um registro de cada vez, ordenado por Id

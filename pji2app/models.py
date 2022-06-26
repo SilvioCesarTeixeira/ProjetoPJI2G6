@@ -13,3 +13,4 @@ class Cadastro(models.Model):
     inputCEP = models.CharField(max_length=9, null=True, blank=True)
     inputCity = models.CharField(max_length=50, null=True, blank=True)
     inputEstado = models.CharField(max_length=20, null=True, blank=True)
+    inputTipo = models.BooleanField(null=None, blank=None)
